@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { footerLink1, footerLink2, footerLink3 } from "@/constants";
+import { footerLink1, footerLink2, footerLink3 } from "@/constants/index";
 import { Line } from "./Sidebar";
 
 const FooterLinks = ({ links, text }: { links: string[]; text: string }) => {
@@ -32,8 +32,15 @@ const Footer = () => {
       <FooterLinks links={footerLink1} text="Company" />
       <FooterLinks links={footerLink2} text="Programs" />
       <FooterLinks links={footerLink3} text="Resources" />
-      <p className="text-[.85rem] sm:text-[#A49B91] sm:dark:text-[#898989] leading-relaxed font-semibold">
-        © {date} TikTok - Naseem Khan
+      <p className="text-xs sm:text-[#A49B91] sm:dark:text-[#898989] leading-relaxed font-semibold">
+        © {date} TikTok -{" "}
+        <Link
+          href={"https://www.linkedin.com/in/naseem-khan-275275258/"}
+          target="_blank"
+          className="hover:underline whitespace-break-spaces"
+        >
+          Naseem Khan
+        </Link>
       </p>
     </div>
   );

@@ -66,7 +66,7 @@ const Sidebar = ({ customClasses }: SidebarProps) => {
   return (
     <div
       className={cn(
-        "w-64 sm:w-60 fixed sm:left-0 sm:top-16 h-full sm:h-[88%] overflow-y-auto z-50 transition-all duration-500",
+        "w-64 fixed sm:left-0 sm:top-16 h-full sm:h-[88%] overflow-y-auto z-50 transition-all duration-500",
         customClasses
       )}
     >

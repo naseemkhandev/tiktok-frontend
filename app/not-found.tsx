@@ -5,7 +5,7 @@ import { BsPlayFill } from "react-icons/bs";
 
 const NotFound = () => {
   return (
-    <div className="bg-[url('/error-bg.png')] bg-cover bg-center h-screen w-full flex items-center justify-center flex-col gap-5">
+    <div className="text-black dark:text-black bg-[url('/error-bg.png')] bg-cover bg-center h-screen w-full flex items-center justify-center flex-col gap-5">
       <div className="flex items-center justify-center -my-12 sm:-my-16 lg:-my-20">
         <h2 className="text-[160px] sm:text-[220px] md:text-[300px] font-medium">
           4

@@ -3,33 +3,22 @@
 import Image from "next/image";
 import { IoCloseCircleSharp, IoSearch } from "react-icons/io5";
 import { HiOutlineMenu, HiPlus } from "react-icons/hi";
-import { RxDotsVertical } from "react-icons/rx";
-import { RiUserLine } from "react-icons/ri";
-import { AiOutlineHeart } from "react-icons/ai";
-import { FiBookmark } from "react-icons/fi";
-import { LuLogOut } from "react-icons/lu";
-import { useRef, useState } from "react";
-import { SignOutButton, SignedIn, UserButton, useAuth } from "@clerk/nextjs";
+import { useState } from "react";
+import { UserButton, useAuth } from "@clerk/nextjs";
 import Link from "next/link";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ToggleTheme } from "./ToggleTheme";
 import { Input } from "./ui/input";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { ToggleTheme } from "./ToggleTheme";
 import Sidebar from "./Sidebar";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import NavbarDropdown from "./NavbarDropdown";
 
 const Navbar = () => {
+  const { isSignedIn } = useAuth();
   const [toggleSearch, setToggleSearch] = useState<boolean>(false);
   const [sidebar, setSidebar] = useState<boolean>(false);
-  const searchInputField = useRef<HTMLInputElement | null>(null);
-  const { isSignedIn } = useAuth();
+  const [searchValue, setSearchValue] = useState("");
 
   return (
     <>
@@ -65,16 +54,22 @@ const Navbar = () => {
               <Input
                 type="text"
                 placeholder="Search"
-                ref={searchInputField}
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
                 className="rounded-full text-base bg-lightgray dark:placeholder:text-[#898989] dark:bg-lightblack pr-[5.6rem] pt-[1.4rem] pb-6 pl-5 w-full hover:border-darkgray dark:hover:border-[#484848] focus-within:border-darkgray dark:focus-within:border-[#484848] border-[1.5px] border-transparent caret-darkpink"
               />
 
-              {searchInputField.current &&
-              searchInputField.current.value.length > 0 ? (
-                <IoCloseCircleSharp className="absolute top-1/2 -translate-y-1/2 right-[4.2rem] text-lg text-[#A7A7AC] cursor-pointer" />
-              ) : null}
+              {searchValue.length > 0 && (
+                <IoCloseCircleSharp
+                  className="absolute top-1/2 -translate-y-1/2 right-[4.2rem] text-lg text-[#A7A7AC] cursor-pointer"
+                  onClick={() => setSearchValue("")}
+                />
+              )}
 
-              <Button className="text-2xl rounded-tr-full rounded-br-full bg-lightgray hover:bg-darkgray py-[1.5rem] text-[#999898] hover:text-black absolute top-1/2 -translate-y-1/2 right-[1.5px] hover:border-darkgray dark:hover:bg-[#484848] dark:bg-lightblack dark:hover:border-[#484848] dark:hover:text-white">
+              <Button
+                onClick={() => setToggleSearch(false)}
+                className="text-2xl rounded-tr-full rounded-br-full bg-lightgray hover:bg-darkgray py-[1.5rem] text-[#999898] hover:text-black absolute top-1/2 -translate-y-1/2 right-[1.5px] hover:border-darkgray dark:hover:bg-[#484848] dark:bg-lightblack dark:hover:border-[#484848] dark:hover:text-white"
+              >
                 <IoSearch />
               </Button>
 
@@ -97,7 +92,7 @@ const Navbar = () => {
                   <HiPlus className="text-xl" />
                   Upload
                 </Button>
-                
+
                 {!isSignedIn && (
                   <Link href="/sign-in">
                     <Button className="rounded-sm px-8 hidden md:block font-bold text-base bg-lightpink hover:bg-[#F02A50] text-white">
@@ -113,52 +108,7 @@ const Navbar = () => {
                   <IoSearch />
                 </Button>
 
-                <DropdownMenu>
-                  <DropdownMenuTrigger>
-                    <Button
-                      className="bg-transparent text-black dark:text-white text-xl hover:bg-transparent hidden sm:block"
-                      size="icon"
-                    >
-                      <RxDotsVertical />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    {isSignedIn && (
-                      <>
-                        <DropdownMenuItem>
-                          <RiUserLine className="text-xl" />
-                          View Profile
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <FiBookmark className="text-xl" />
-                          Favorites
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <AiOutlineHeart className="text-xl" />
-                          Likes
-                        </DropdownMenuItem>
-                      </>
-                    )}
-                    <DropdownMenuItem>
-                      <ToggleTheme />
-                    </DropdownMenuItem>
-                    {isSignedIn && (
-                      <>
-                        <DropdownMenuSeparator />
-                        <SignedIn>
-                          <SignOutButton>
-                            <DropdownMenuItem>
-                              <p className="flex items-center gap-1">
-                                <LuLogOut className="text-xl" />
-                                <span>Logout</span>
-                              </p>
-                            </DropdownMenuItem>
-                          </SignOutButton>
-                        </SignedIn>
-                      </>
-                    )}
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                <NavbarDropdown />
               </div>
               <div className="flex items-center gap-2">
                 <UserButton afterSignOutUrl="/" />

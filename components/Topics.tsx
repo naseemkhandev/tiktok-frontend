@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { topics } from "@/constants";
+import { topics } from "@/constants/index";
 import { cn } from "@/lib/utils";
 
 const Topics = () => {
@@ -26,10 +26,8 @@ const Topics = () => {
                   : "bg-lightgray hover:bg-darkgray dark:bg-lightblack dark:hover:bg-[#484848]"
               )}
             >
-              <span className="text-sm sm:text-base lg:text-xl">
-                {<Icon />}
-              </span>
-              <p className="text-xs sm:text-sm lg:text-base font-semibold whitespace-nowrap">
+              <span className="text-base lg:text-xl">{<Icon />}</span>
+              <p className="text-sm lg:text-base font-semibold whitespace-nowrap">
                 {item.name}
               </p>
             </Link>

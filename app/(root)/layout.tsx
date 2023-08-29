@@ -17,7 +17,7 @@ export default function RootLayout({
             <div className="hidden sm:block">
               <Sidebar />
             </div>
-            <div className="my-8 mt-20 px-5 sm:ml-60 2xl:pr-20 w-full sm:w-[70%] md:w-[80%] lg:w-[85%] xl:w-[90%] 2xl:w-full relative">
+            <div className="my-8 mt-20 px-5 sm:ml-64 2xl:pr-24 w-full sm:w-[70%] md:w-[80%] lg:w-[85%] xl:w-[90%] 2xl:w-full relative">
               <Categories />
               {children}
             </div>
