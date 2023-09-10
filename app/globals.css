@@ -85,14 +85,6 @@ body {
   overflow-x: hidden;
 }
 
-.videos::-webkit-scrollbar {
-  width: 0px;
-}
-
-.topics::-webkit-scrollbar {
-  height: 0;
-}
-
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -104,4 +96,12 @@ body {
 
 ::-webkit-scrollbar-track {
   background-color: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.topics::-webkit-scrollbar {
+  height: 0;
 }

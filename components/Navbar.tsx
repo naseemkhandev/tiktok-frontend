@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <>
       <div className="fixed top-0 w-full z-10">
-        <div className="flex items-center justify-between gap-10 border-b-[1.5px] dark:border-b-lightblack py-[.5rem] px-5 text-base relative">
+        <div className="flex items-center justify-between gap-10 bg-white dark:bg-[#121212] border-b-[1.5px] dark:border-b-lightblack py-[.5rem] px-5 text-base relative">
           <div className="relative">
             <Image
               src="/logo.png"
@@ -122,7 +122,7 @@ const Navbar = () => {
       <div className="sm:hidden block relative">
         <div
           className={cn(
-            "flex items-center gap-2 duration-500 transition-all absolute top-0 left-0 w-[13.6rem] pb-1 pt-3 z-[80] bg-background dark:bg-[#121212]",
+            "flex items-center gap-2 duration-500 transition-all absolute top-0 left-0 w-[13.6rem] pb-1 pt-3 z-[80] bg-white dark:bg-[#121212]",
             sidebar ? "left-4" : "-left-full"
           )}
         >
@@ -138,7 +138,7 @@ const Navbar = () => {
         <Sidebar
           customClasses={
             sidebar
-              ? "top-0 left-0 bg-background dark:bg-[#121212] shadow-xl"
+              ? "top-0 left-0 bg-white dark:bg-[#121212] shadow-xl"
               : "-left-full"
           }
         />

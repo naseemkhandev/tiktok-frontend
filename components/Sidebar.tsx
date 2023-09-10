@@ -10,6 +10,7 @@ import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { MdExplore, MdOutlineExplore } from "react-icons/md";
 import { HiOutlineUsers, HiUsers } from "react-icons/hi2";
+import { useState } from "react";
 
 export const Line = () => {
   return (
@@ -61,13 +62,17 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ customClasses }: SidebarProps) => {
+  const [isScrollbarVisible, setIsScrollbarVisible] = useState<boolean>(false);
   const { isSignedIn } = useAuth();
 
   return (
     <div
+      onMouseEnter={() => setIsScrollbarVisible(true)}
+      onMouseLeave={() => setIsScrollbarVisible(false)}
       className={cn(
         "w-64 fixed sm:left-0 sm:top-16 h-full sm:h-[88%] overflow-y-auto z-50 transition-all duration-500",
-        customClasses
+        customClasses,
+        isScrollbarVisible ? "" : "sidebar"
       )}
     >
       <div className="w-full px-[1.2rem] pt-16 sm:pt-4 pb-10 flex flex-col gap-4 relative">

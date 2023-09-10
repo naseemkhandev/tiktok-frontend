@@ -24,12 +24,9 @@ const NavbarDropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Button
-          className="bg-transparent text-black dark:text-white text-xl hover:bg-transparent hidden sm:block"
-          size="icon"
-        >
+        <span className="p-2 bg-transparent text-black dark:text-white text-xl hover:bg-transparent hidden sm:block">
           <RxDotsVertical />
-        </Button>
+        </span>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         {isSignedIn && (
