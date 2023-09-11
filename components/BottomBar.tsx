@@ -14,7 +14,7 @@ const BottomBar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex items-center justify-between fixed bottom-0 left-0 w-full px-5 py-3 border-t">
+    <div className="flex items-center justify-between fixed bottom-0 left-0 w-full px-5 py-3 border-t bg-white dark:bg-[#121212]">
       {bottomBar.map((link) => {
         const OutlineIcon = link.iconOutline;
         const FillIcon = link.iconFill;
@@ -24,10 +24,10 @@ const BottomBar = () => {
             href={link.route}
             key={link.name}
             className={cn(
-              "flex flex-col items-center capitalize",
+              "flex flex-col items-center capitalize relative",
               link.route === pathname
                 ? "text-darkpink"
-                : "text-[#8d8d8d] dark:text-[#898989] hover:text-[#000] dark:hover:text-lightgray relative"
+                : "text-[#8d8d8d] dark:text-[#898989] hover:text-[#000] dark:hover:text-lightgray"
             )}
           >
             <span

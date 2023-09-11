@@ -10,8 +10,8 @@ const Topics = () => {
   const pathname = usePathname();
 
   return (
-    <div className="topics w-full sm:w-[88%] overflow-x-auto">
-      <div className="flex flex-nowrap items-center gap-2 w-full">
+    <div className="topics w-full overflow-x-auto">
+      <div className="flex flex-nowrap items-center gap-2 w-full pr-5 pl-5 sm:pl-0 sm:pr-10">
         {topics.map((item) => {
           const Icon = item.icon;
 

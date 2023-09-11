@@ -30,7 +30,7 @@ const VideoCard = ({ post }: any) => {
   };
 
   return (
-    <div className="flex items-start gap-3 w-full py-5 border-b border-muted-foreground/50">
+    <div className="flex items-start gap-3 w-full py-5 pr-5 pl-5 sm:pl-0 border-b border-muted-foreground/50">
       <Link href={"/"}>
         <Image
           src={post.postedBy.image}
@@ -81,7 +81,7 @@ const VideoCard = ({ post }: any) => {
             loop
             ref={videoRef}
             onClick={onVideoPlay}
-            className="w-full aspect-auto rounded-lg bg-black cursor-pointer"
+            className="w-full aspect-auto rounded-xl bg-black cursor-pointer"
           >
             <source src={post.video.asset.url} type="video/mp4" />
           </video>

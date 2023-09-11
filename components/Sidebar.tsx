@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { MdExplore, MdOutlineExplore } from "react-icons/md";
 import { HiOutlineUsers, HiUsers } from "react-icons/hi2";
 import { useState } from "react";
+import { FiLogIn } from "react-icons/fi";
 
 export const Line = () => {
   return (
@@ -42,7 +43,7 @@ const SidebarLinks = ({
         className={cn(
           "bg-transparent w-full rounded-sm px-4 py-6 font-[700] text-xl flex items-center justify-start gap-1",
           pathname === link
-            ? "text-lightpink hover:text-lightpink hover:bg-muted-foreground/10"
+            ? "text-lightpink hover:text-lightpink hover:bg-muted-foreground/10 bg-muted-foreground/10"
             : "hover:bg-muted-foreground/10"
         )}
       >
@@ -51,7 +52,7 @@ const SidebarLinks = ({
         ) : (
           <OutlineIcon className="text-2xl" />
         )}
-        {title}
+        <p className="sm:hidden md:block">{title}</p>
       </Button>
     </Link>
   );
@@ -70,7 +71,7 @@ const Sidebar = ({ customClasses }: SidebarProps) => {
       onMouseEnter={() => setIsScrollbarVisible(true)}
       onMouseLeave={() => setIsScrollbarVisible(false)}
       className={cn(
-        "w-64 fixed sm:left-0 sm:top-16 h-full sm:h-[88%] overflow-y-auto z-50 transition-all duration-500",
+        "w-64 sm:w-24 md:w-64 fixed sm:left-0 sm:top-16 h-full sm:h-[88%] overflow-y-auto z-50 transition-all duration-500",
         customClasses,
         isScrollbarVisible ? "" : "sidebar"
       )}
@@ -99,31 +100,39 @@ const Sidebar = ({ customClasses }: SidebarProps) => {
           <div className="relative pt-4 flex flex-col gap-3">
             <Line />
 
-            <h2 className="text-[#505264] dark:text-white text-sm font-semibold">
-              Suggested accounts
+            <h2 className="capitalize text-[#505264] dark:text-white text-sm font-semibold">
+              <span className="sm:hidden md:inline-block">Suggested</span>{" "}
+              accounts
             </h2>
-            <span className="text-[#A49B91] dark:text-[#898989] pb-10 text-sm font-semibold">
+            <span className="text-[#A49B91] dark:text-[#898989] pb-10 text-sm sm:text-[11px] md:text-sm font-semibold">
               Accounts you follow will appear here .
             </span>
           </div>
         ) : (
           <div className="relative pt-4 flex flex-col gap-5">
             <Line />
-            <span className="text-[#A49B91] dark:text-[#898989] text-base">
+            <span className="text-[#A49B91] dark:text-[#898989] sm:hidden md:block text-base">
               Log in to follow creators, like videos, and view comments.
             </span>
+            <h2 className="capitalize text-[#505264] dark:text-white font-semibold">
+              Login
+            </h2>
+
             <Link href="/sign-in">
               <Button
                 variant="outline"
-                className="rounded-sm px-8 py-6 border-lightpink font-semibold text-lg bg-transparent w-full text-lightpink hover:text-lightpink hover:bg-lightpink/5"
+                className="rounded-sm px-8 py-6 sm:px-0 sm:py-0 md:px-8 md:py-6 border-lightpink font-semibold text-lg bg-transparent w-full text-lightpink hover:text-lightpink hover:bg-lightpink/5"
               >
-                Log in
+                <span className="sm:hidden md:block">Log in</span>
+                <FiLogIn className="hidden sm:block md:hidden text-xl" />
               </Button>
             </Link>
           </div>
         )}
 
-        <Footer />
+        <div className="sm:hidden md:block">
+          <Footer />
+        </div>
       </div>
     </div>
   );

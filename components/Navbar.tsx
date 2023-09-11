@@ -30,7 +30,7 @@ const Navbar = () => {
               width={115}
               height={150}
               alt="logo"
-              className="sm:block hidden"
+              className="sm:block hidden aspect-auto"
             />
             <Button
               onClick={() => setSidebar(true)}
@@ -85,13 +85,15 @@ const Navbar = () => {
                     : "xs:gap-1 md:gap-3 lg:gap-5"
                 )}
               >
-                <Button
-                  variant="outline"
-                  className="rounded-sm hidden font-semibold hover:bg-lightgray dark:bg-lightblack dark:hover:bg-[#1B1B1B] text-base sm:flex items-center gap-2 dark:border-0"
-                >
-                  <HiPlus className="text-xl" />
-                  Upload
-                </Button>
+                <Link href="/upload">
+                  <Button
+                    variant="outline"
+                    className="rounded-sm hidden font-semibold hover:bg-lightgray dark:bg-lightblack dark:hover:bg-[#1B1B1B] text-base sm:flex items-center gap-2 dark:border-0"
+                  >
+                    <HiPlus className="text-xl" />
+                    Upload
+                  </Button>
+                </Link>
 
                 {!isSignedIn && (
                   <Link href="/sign-in">
