@@ -18,7 +18,7 @@ export default function RootLayout({
               <Sidebar />
             </div>
             <div className="w-full sm:pl-24 md:pl-72 pb-8 pt-16 sm:pt-20 px-5 md:px-10 relative">
-              {/* <Topics /> */}
+              <Topics />
               {children}
             </div>
             <div className="sm:hidden block relative">
