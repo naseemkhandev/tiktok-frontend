@@ -18,7 +18,7 @@ const page = () => {
         <div className="flex flex-col gap-5">
           <div>
             <h2 className="text-2xl font-bold">Upload Video</h2>
-            <p className="text-black/20 dark:text-white/20 font-semibold">
+            <p className="text-black/30 dark:text-white/20 font-semibold">
               Post a video to your account
             </p>
           </div>
@@ -32,7 +32,7 @@ const page = () => {
                 <h2 className="text-lg font-semibold">Upload Video</h2>
               </div>
 
-              <div className="flex flex-col items-center gap-4 text-black/20 dark:text-white/20">
+              <div className="flex flex-col items-center gap-4 text-black/30 dark:text-white/20">
                 <p>MP4 or WebM or ogg</p>
                 <p>720x1280 or higher</p>
                 <p>Upto 10 minutes</p>

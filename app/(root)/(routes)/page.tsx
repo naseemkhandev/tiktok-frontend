@@ -3,6 +3,7 @@ import VideoCard from "@/components/VideoCard";
 import { createOrGetUser } from "@/utils";
 import { client } from "@/utils/client";
 import { allPostsQuery } from "@/utils/queries";
+import supportsColor from "supports-color";
 
 const Home = async () => {
   const query = allPostsQuery();
